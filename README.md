@@ -2,8 +2,14 @@
 Sistem Pengaturan Lalu Lintas dengan Mikro-Prosesor
 
 ## Pengaturan Lampu Rambu Lalu Lintas
+Pengaturan lalu lintas di persimpangan jalan dimaksudkan untuk mengatur pergerakan kendaraan pada masing-masing kelompok pergerakan kendaraan agar dapat bergerak secara bergantian sehingga tidak saling mengganggu antar-arus yang ada. Lampu ini yang menandakan kapan kendaraan harus berjalan dan berhenti secara bergantian dari berbagai arah dengan perhitungan yang tepat sesuai kondisi di lapangan dengan memperhatikan aspek volume lalu lintas di setiap jalur.
+
+Lampu lalu lintas terdiri dari tiga warna, yakni merah, kuning, dan hijau. Merah untuk berhenti, kuning untuk memperlambat kendaraan dan siap untuk berhenti, lalu warna hijau untuk  jalan atau bergerak. Pada desain perempatan jalan lampu hijau hanya menyala di satu sisi jalur, sedangkan ketiga jalur lainnya harus berwarna merah, pengaturan sistem yang demikian ditujukan untuk keamanan dan kelancaran pengguna jalan yang melintas.
 
 ## Tombol untuk Pejalan Kaki
+Angka kecelakaan yang mencederai pejalan kaki yang menyeberang jalan relatif tinggi sehingga perlu diambil langkah untuk melindungi pejalan kaki pada saat menyeberang jalan dari kecelakaan dengan kendaraan bermotor perlu dilakukan langkah untuk melindungi pejalan kaki yang disesuaikan berdasarkan faktor jumlah pejalan kaki yang menyeberang jalan serta arus lalu lintas kendaraan.
+
+Pelican crossing sendiri merupakan metode jenis penyeberangan pejalan kaki, fasilitas penyeberangan yang dilengkapi dengan tombol untuk mengaktifkan lampu lalu lintas, bila tombol dipencet maka beberapa saat kemudian lampu bagi pejalan kaki diaktifkan dan menjadi hijau bagi pejalan kaki, dan merah untuk lalu lintas kendaraan. Waktu hijau untuk pejalan kaki pun harus diatur dan dikaji dengan lebar jalan hingga volume kendaraan, bisa lebih lama jika di tempat tersebut banyak penyeberang jalannya, namun juga bisa hanya sebentar agar tidak mengganggu arus jalan bagi pengguna kendaraan.
 
 # Solusi dengan Rangkaian Mikro-Kontroler
 
@@ -164,8 +170,6 @@ int main(){
 
 ## Membuat PCB
 Desain PCB untuk mikro-kontroler dilakukan dengan membuat clone PCB Arduino Uno. Pada implementasinya, juga dilakukan instalasi Bootloader Arduino untuk memudahkan dalam memprogram mikro-kontroler ini (I don’t wanna “brick” the micro-processor). Kristal osilator juga menggunakan frekuensi yang sama dengan Arduino Uno, 16MHz.
-
-## Merangkai Komponen pada PCB
 
 ## Burn Bootloader Arduino
 Untuk meng-upload Bootloader Arduino, kali ini digunakan Arduino lain sebagai ISP (In-System Program). Sebenarnya, akan lebih baik apabila menggunakan device yang lebih proper seperti USB-ASP, namun kali ini memanfaatkan resource yang telah tersedia (meminjam Arduino Uno punya teman).
