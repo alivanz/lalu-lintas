@@ -37,6 +37,7 @@ const uint16_t WHITE  = RED|GREEN|BLUE;
 Dari 4 arah kendaraan, hanya boleh ada satu jalur yang berjalan setiap waktu, sedangkan sisanya menunggu gilirannya masing-masing. Artinya dalam satu waktu, hanya ada satu lampu berwarna hijau atau kuning, tiga sisanya haruslah berwarna merah. Selain itu ada tombol interupsi untuk mempercepat durasi waktu hijau (durasi kuning tidak terpengaruh) guna memfasilitasi pejalan kaki untuk lewat dengan lebih cepat (in case, apabila pejalan kaki terburu-buru?). Hasilnya, adalah 12 state yang terdefinisi sebagai berikut,
 
 STATE |	DURATION | NEXT STATE	NEXT STATE ON INTERRUPT	| NORTH |	EAST | SOUTH | WEST
+--- | --- | --- | --- | --- | --- | ---
 0	|10s|1	|8	|Green	|Red	|Red	|Red
 1	|1s	|2	|1	|Yellow	|Red	|Red	|Red
 2	|10s|3	|9	|Red	  |Green	|Red	|Red
