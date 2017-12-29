@@ -1,25 +1,35 @@
 # lalu-lintas
 Sistem Pengaturan Lalu Lintas dengan Mikro-Prosesor
 
+## Pengaturan Lampu Rambu Lalu Lintas
+
+## Tombol untuk Pejalan Kaki
+
 # Solusi dengan Rangkaian Mikro-Kontroler
 
 ## Mikro-Kontroler
 Pada solusi yang ditawarkan kali ini, akan digunakan Chip ATMega328P yang terinstall Bootloader Arduino.
+
 ![Pin ATMega328P](http://nearbus.net/wiki/images/5/5f/ATM328_arduino_pinout.jpg)
 
 ## Konfigurasi LED RGB
 Untuk menyatakan ketiga warna rambu lalu lintas, digunakan lampu LED RGB (Red-Green-Blue). Warna merah dinyatakan dengan lampu Red, warna hijau dinyatakan dengan lampu Green, sedangkan warna kuning dinyatakan dengan kombinasi lampu Red dan Green.
+
 Pada kali ini, digunakan lampu LED RGB Common Cathode. Tiap-tiap pin lampu (kecuali pin common cathode) dihubungkan pada output digital dari mikro-kontroler. Untuk membatasi arus yang mengalir pada LED, diberikan resistor sebesar 1kOhm sebelum terhubung dengan mikro-kontroler.
+
 ![Pin LED RGB Common Cathode](http://www.nkcelectronics.com/assets/images/rgb_5mm_cathode.jpg)
 
 Pada kali ini, pin-pin yang digunakan untuk men-drive nyala lampu LED adalah sebagai berikut,
+
 |       |RED  |GREEN  |BLUE |
-|-------|-----|-------|-----|
+| ----- | --- | ----- | --- |
 |NORTH	|PC0	|PC1	  |PC2  |
 |EAST	  |PC3	|PC4	  |PC5  |
 |SOUTH	|PD4	|PD5    |PD6  |
 |WEST   |PB0	|PB1    |PB2  |
+
 Pin-pin yang dipilih berdasarkan beberapa hal yaitu dengan menghindari pin yang digunakan untuk komunikasi serial (TX, RX,) untuk “future use” dan pin untuk Interrupt pejalan kaki (INT0).
+
 Untuk memudahkan dalam mengatur warna, dibuat konstanta-konstata warna nyala lampu LED bersesuaian dengan urutan pin warna lampu LED. Pada kasus ini terurut warna Red-Green-Blue. Untuk warna selain merah, hijau, dan biru dilakukan kombinasi penyalaan lampu untuk mendapatkan persepsi warna yang lebih variatif. Konstanta tersebut seperti pada berikut,
 
 ```C
@@ -155,13 +165,16 @@ int main(){
 ## Membuat PCB
 Desain PCB untuk mikro-kontroler dilakukan dengan membuat clone PCB Arduino Uno. Pada implementasinya, juga dilakukan instalasi Bootloader Arduino untuk memudahkan dalam memprogram mikro-kontroler ini (I don’t wanna “brick” the micro-processor). Kristal osilator juga menggunakan frekuensi yang sama dengan Arduino Uno, 16MHz.
 
-## MERANGKAI KOMPONEN PADA PCB
+## Merangkai Komponen pada PCB
 
-## BURN BOOTLOADER ARDUINO
+## Burn Bootloader Arduino
 Untuk meng-upload Bootloader Arduino, kali ini digunakan Arduino lain sebagai ISP (In-System Program). Sebenarnya, akan lebih baik apabila menggunakan device yang lebih proper seperti USB-ASP, namun kali ini memanfaatkan resource yang telah tersedia (meminjam Arduino Uno punya teman).
+
 Rangkaian untuk mem-burn Bootloader dapat dilihat seperti gambar dibawah. Intinya adalah menghubungkan pin SCK, MOSI, dan MISO, kontrol untuk Reset, dan pastinya catu daya 5V dan kristal osilator.
+
 ![Menggunakan Board Arduino sebagai ISP](https://www.arduino.cc/en/uploads/Tutorial/BreadboardAVR.png)
 
 ## Upload The Code
 Library yang dibutuhkan telah tersedia pada Arduino IDE. Pertama, adalah mengupload program ISP pada Arduino yang telah ada. Dapat dilakukan dengan cara memilih pada menu File > Examples > Arduino ISP > Arduino ISP lalu upload kode tersebut. Kemudian hubungkan seperti rangkaian diatas, lalu upload Bootloader pada menu Tools > Programmer > Arduino as ISP dan Tools > Burn Bootloader.
+
 Setelah bootloader ter-install, prosedur untuk mengupload ke Arduino Clone seperti mengupload kode Arduino biasa. Namun, karena Arduino Clone yang dibuat ini tidak memiliki USB Decoder untuk komunikasi Serial yang dibutuhkan untuk mengupload Kode ke Arduino Clone, digunakan FTDI USB Serial.
